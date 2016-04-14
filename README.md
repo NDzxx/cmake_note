@@ -1,3 +1,3 @@
-# My Awesome Book
+# cmake note
 
-This file file serves as your book's preface, a great place to describe your book's content and ideas.
+网上写的cmake知识感觉很零碎，这几天刚好在做cmake，结合自己做的整理一份笔记出来，以后有用到也方便查看
