@@ -49,6 +49,35 @@ PS:baidu说此种方法有bug(?未验证)，最好采用find_package,所以我�
 - 程序库说明文件  
 在项目的根目录中创建目录 cmake/modules/ ，在 cmake/modules/ 下创建文件 FindlibXX.cmake ，
 截图如下： 
-![path](find_lib.jpg)  
+![path](find_lib.jpg)    
 
+ - Findlib_cur_ssl_md.cmake  
+ 
+ 
+ 
+ ```
+ #输出到cmake_gui页面
+ MESSAGE(STATUS "Using bundled Findlibcurld_vc140_x64_openssl_lib_md.cmake...")
 
+if (CMAKE_SYSTEM_NAME MATCHES "Linux")
+#查找库路径
+FIND_LIBRARY(
+ LIB_CURLSSL_LIBRARIES NAMES libcurld_vc140_x64_openssl_lib_md.a
+ PATHS ${CMAKE_SOURCE_DIR}/commonLibs/dep/lib/debug
+)
+elseif (CMAKE_SYSTEM_NAME MATCHES "Windows")
+FIND_LIBRARY(
+ LIB_CURLSSL_LIBRARIES NAMES libcurld_vc140_x64_openssl_lib_md.lib
+ PATHS ${CMAKE_SOURCE_DIR}/commonLibs/dep/lib/debug
+)
+endif (CMAKE_SYSTEM_NAME MATCHES "Linux") 
+```
+```
+#还可以查找头文件，但是因为我include_
+FIND_PATH(
+   LIBDB_CXX_INCLUDE_DIR
+   db_cxx.h 
+   /usr/include/ 
+   /usr/local/include/ 
+   )
+```
