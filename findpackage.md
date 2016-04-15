@@ -28,10 +28,11 @@ add_library(bqutil STATIC ${allFiles})
 
 #查找自定义库
 FIND_PACKAGE(lib_curl_ssl_md REQUIRED)
+#标记变量
 MARK_AS_ADVANCED(
  LIB_CURLSSL_LIBRARIES
 )
-
+#找到，链接
 IF(LIB_CURLSSL_LIBRARIES)
 MESSAGE(STATUS "Found lib_curl libraries")
 TARGET_LINK_LIBRARIES(bqutil ${LIB_CURLSSL_LIBRARIES})
@@ -83,5 +84,50 @@ FIND_PATH(
 ```
 2.FIndlib_dllAll.cmake
 ```
+MESSAGE(STATUS "Using bundled Findlib_dllALL.cmake... ")
 
+if (CMAKE_SYSTEM_NAME MATCHES "Linux") 
+FIND_LIBRARY(
+ LIB_EAY32_LIBRARIES NAMES libeay32.a
+ PATHS ${CMAKE_SOURCE_DIR}/commonlibs/dep/dll/x64
+)
+elseif (CMAKE_SYSTEM_NAME MATCHES "Windows")
+FIND_LIBRARY(
+ LIB_EAY32_LIBRARIES NAMES libeay32.lib
+ PATHS ${CMAKE_SOURCE_DIR}/commonlibs/dep/dll/x64
+)
+endif (CMAKE_SYSTEM_NAME MATCHES "Linux") 
 ```
+3.Findlib_NetCryptor.cmake
+```cmake
+MESSAGE(STATUS "Using bundled Findlib_NetCryptor.cmake...")
+
+if (CMAKE_SYSTEM_NAME MATCHES "Linux") 
+FIND_LIBRARY(
+ LIB_NETCRYPTOR_LIBRARIES NAMES NetCryptor_x64.lib.a
+ PATHS ${CMAKE_SOURCE_DIR}/commonLibs/dep/lib/debug
+)
+elseif (CMAKE_SYSTEM_NAME MATCHES "Windows")
+FIND_LIBRARY(
+ LIB_NETCRYPTOR_LIBRARIES NAMES NetCryptor_x64.lib
+ PATHS ${CMAKE_SOURCE_DIR}/commonLibs/dep/lib/debug
+)
+endif (CMAKE_SYSTEM_NAME MATCHES "Linux") 
+```
+4.Findlib_protobuf.cmake
+```
+MESSAGE(STATUS "Using bundled Findlib_protobuf.cmake...")
+
+if (CMAKE_SYSTEM_NAME MATCHES "Linux") 
+FIND_LIBRARY(
+ LIB_PROTOBUF_LIBRARIES NAMES libprotobuf_vc14.0_x64_Debug.a
+ PATHS ${CMAKE_SOURCE_DIR}/commonLibs/dep/lib/debug
+)
+elseif (CMAKE_SYSTEM_NAME MATCHES "Windows")
+FIND_LIBRARY(
+ LIB_PROTOBUF_LIBRARIES NAMES libprotobuf_vc14.0_x64_Debug.lib
+ PATHS ${CMAKE_SOURCE_DIR}/commonLibs/dep/lib/debug
+)
+endif (CMAKE_SYSTEM_NAME MATCHES "Linux") 
+```
+
