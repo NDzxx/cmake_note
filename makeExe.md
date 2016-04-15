@@ -110,7 +110,7 @@ IF(LIB_NETCRYPTOR_LIBRARIES)
 MESSAGE(STATUS "Found lib_NetCryptor libraries")
 target_link_libraries(BqServer ${LIB_NETCRYPTOR_LIBRARIES})
 ENDIF (LIB_NETCRYPTOR_LIBRARIES)
-
+#设置依赖关系，在编译bqserver前确保各个库都已经生成，避免链接错误
 add_dependencies(BqServer bqdata)
 add_dependencies(BqServer bqnet)
 add_dependencies(BqServer bqutil)
@@ -122,5 +122,4 @@ target_link_libraries(BqServer bqnet)
 target_link_libraries(BqServer bqutil)
 target_link_libraries(BqServer bqrpc)
 target_link_libraries(BqServer cpp_redis)
-add_dependencies(BqServer bqdata)
 ```
