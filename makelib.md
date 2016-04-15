@@ -58,5 +58,12 @@ add_library(bqdata STATIC ${allFiles})
    - PROPERTY FOLDER 设置文件夹路径  
   **相应的可以使用get_property:获取一个属性值  **
   
+###set_target_properties  
+设置目标的一些属性来改变它们构建的方式。  
+ set_target_properties(target1 target2 ...
+                        PROPERTIES prop1 value1
+                        prop2 value2 ...)  
+ 设置输出名称，版本号，解决相同target被删除的问题  
+                        
 ##2.bqnet
 
