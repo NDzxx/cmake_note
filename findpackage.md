@@ -51,8 +51,7 @@ PS:baidu说此种方法有bug(?未验证)，最好采用find_package,所以我�
 截图如下： 
 ![path](find_lib.jpg)    
 
- - Findlib_cur_ssl_md.cmake  
- 
+ 1.Findlib_cur_ssl_md.cmake  
  
  
  ```
@@ -72,12 +71,17 @@ FIND_LIBRARY(
 )
 endif (CMAKE_SYSTEM_NAME MATCHES "Linux") 
 ```
+没使用的程序段
 ```
-#还可以查找头文件，但是因为我include_
+#还可以查找头文件，但是因为我include_directories已经包含头文件路径，所以不在查找了
 FIND_PATH(
    LIBDB_CXX_INCLUDE_DIR
    db_cxx.h 
    /usr/include/ 
    /usr/local/include/ 
    )
+```
+2.FIndlib_dllAll.cmake
+```
+
 ```
