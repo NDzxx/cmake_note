@@ -23,7 +23,10 @@ FILE(GLOB HEADER_LIST ./*.h)
 
 source_group("Include" FILES ${HEADER_LIST})
 source_group("Source" FILES ${SRC_LIST})
+#把分散文件合成一个变量
 set(allFiles ${HEADER_LIST} ${SRC_LIST})
+#编译静态库
+#如果编译动态库，如dll或者so,只需要修改STATIC为SHARED
 add_library(bqdata STATIC ${allFiles})
 ```
 
