@@ -156,3 +156,4 @@ link_directories(${MyProject_BINARY_DIR}/src/libxxx
 ${MyProject_BINARY_DIR}/src/libyyy)
 将指示CMake在LDFLAGS附加-Lsrc/libxxx -Lsrc/libyyy。  
 PS:baidu说此种方法有bug(?未验证)，最好采用find_package,所以我在工程中使用了find_package
+##FIND_PACKAGE
