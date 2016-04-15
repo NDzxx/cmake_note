@@ -16,7 +16,9 @@ endif(USE_X64)
 #如果没选择编译选项，默认debug
 if( NOT CMAKE_BUILD_TYPE)
   set( CMAKE_BUILD_TYPE Debug CACHE STRING
-       "Choose the type of build, options are: None Debug Release RelWithDebInfo MinSizeRel." FORCE )
+       "Choose the type of build, options are:\
+       None Debug Release RelWithDebInfo MinSizeRel." 
+       FORCE )
 endif()
 
 #根据不同的操作系统选择编译选项
@@ -89,6 +91,5 @@ add_subdirectory(bqutil)
 add_subdirectory(cpp_redis)
 add_subdirectory(TestAsyncRpc)
 add_subdirectory(BqServer)
-
 
 ```
