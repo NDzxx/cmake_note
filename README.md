@@ -18,3 +18,51 @@ ubuntu:
  apt-get autoremove cmake
 ```
 注:vs2015自带的调试->诊断工具查找内存泄漏很好用
+
+##ubuntu下mysql安装和启动
+- 安装
+
+```
+sudo apt-get install mysql-server
+ 
+apt-get isntall mysql-client
+ 
+sudo apt-get install libmysqlclient-dev
+```
+- 启动
+```
+sudo /etc/init.d/mysql start
+```
+- 停止
+```
+sudo /etc/init.d/mysql stop
+```
+- 重启
+```
+sudo /etc/init.d/mysql restart
+```
+- 查看日志  
+
+```
+cat /var/log/mysql.err
+ 
+cat /var/log/mysql/error.log
+```
+- 远程连接
+###授权
+```
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%'  
+IDENTIFIED BY 'admin123'  WITH GRANT OPTION;
+flush privileges;
+```
+###设置
+```
+sudo gedit  /etc/mysql/my.cnf
+```
+打开后注释掉 bind-address		= 127.0.0.1这一行
+然后重启即可
+- 连接测试
+	```
+    mysql -h 192.168.228.130 -u root -p root
+    ```
+
