@@ -1,6 +1,6 @@
 # 主工程根目录
 
-```
+```cmake
 cmake_minimum_required(VERSION 2.8)
 project(AsyncRpc)
 
@@ -12,17 +12,21 @@ else()
   set(PLATFORM x86)
 endif(USE_X64)
 
+#如果没选择编译选项，默认debug
 if( NOT CMAKE_BUILD_TYPE)
   set( CMAKE_BUILD_TYPE Debug CACHE STRING
        "Choose the type of build, options are: None Debug Release RelWithDebInfo MinSizeRel." FORCE )
 endif()
 
+#根据不同的操作系统选择编译选项
 message(STATUS "operation system is ${CMAKE_SYSTEM}")  
 if (CMAKE_SYSTEM_NAME MATCHES "Linux")  
     message(STATUS "current platform: Linux ")
     set(CMAKE_VERBOSE_MAKEFILE on)
     set(CMAKE_CXX_COMPILER "g++")
+    #使用c++11
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}-std=c++11") 
+    #根据不同的
 	set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS} -O0 -Wall -g -ggdb")
     set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS} -O3 -Wall -DNDEBUG")
 	if(USE_X64)
