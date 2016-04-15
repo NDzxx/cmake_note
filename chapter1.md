@@ -2,6 +2,7 @@
 
 ```cmake
 cmake_minimum_required(VERSION 2.8)
+#工程名，就是vs的sln文件
 project(AsyncRpc)
 
 # 可选项编译的是x64还是x86?
