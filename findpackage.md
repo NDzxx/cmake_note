@@ -45,7 +45,12 @@ ENDIF (LIB_CURLSSL_LIBRARIES)
 link_directories(${MyProject_BINARY_DIR}/src/libxxx
 ${MyProject_BINARY_DIR}/src/libyyy)
 将指示CMake在LDFLAGS附加-Lsrc/libxxx -Lsrc/libyyy。  
-PS:baidu说此种方法有bug(?未验证)，最好采用find_package,所以我在工程中使用了find_package
+PS:baidu说此种方法有bug(?未验证)，最好采用find_package,  
+所以我在工程中使用了find_package  
+PS:注意：
+由于历史原因，相对路径会原样传递给链接器。  
+尽量使用FIND_LIBRARY而避免使用这个。  
+[说link_directories有问题的链接](http://blog.csdn.net/dbzhang800/article/details/6329068)
 ##FIND_PACKAGE
 - 程序库说明文件  
 在项目的根目录中创建目录 cmake/modules/ ，在 cmake/modules/ 下创建文件 FindlibXX.cmake ，
