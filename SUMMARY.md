@@ -2,5 +2,5 @@
 
 * [Introduction](README.md)
 * [rootPrj](chapter1.md)
-* subprj
+* [subprj](subprj.md)
 
