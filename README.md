@@ -52,7 +52,7 @@ cat /var/log/mysql/error.log
 ###授权
 ```
 GRANT ALL PRIVILEGES ON *.* TO 'root'@'%'  
-IDENTIFIED BY 'admin123'  WITH GRANT OPTION;
+IDENTIFIED BY 'root'  WITH GRANT OPTION;
 flush privileges;
 ```
 ###设置
