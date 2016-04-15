@@ -43,7 +43,9 @@ elseif (CMAKE_SYSTEM_NAME MATCHES "Windows")
 else()  
     message(STATUS "other platform: ${CMAKE_SYSTEM_NAME}")  
 endif (CMAKE_SYSTEM_NAME MATCHES "Linux") 
+#开启相对路径选项
 set(CMAKE_USE_RELATIVE_PATHS ON)
+#库输出路径设置
 set(LIBRARY_OUTPUT_PATH ${CMAKE_CURRENT_BINARY_DIR}/lib/)
 
 ADD_DEFINITIONS(-DCRT_SECURE_NO_WARNINGS)
