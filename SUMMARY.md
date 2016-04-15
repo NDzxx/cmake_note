@@ -5,4 +5,5 @@
 * [subprj](subprj.md)
    * [makeLib](makelib.md)
    * [find_package](findpackage.md)
+   * makeExe
 
