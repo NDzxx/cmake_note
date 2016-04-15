@@ -4,4 +4,5 @@
 * [rootPrj](chapter1.md)
 * [subprj](subprj.md)
    * [makeLib](makelib.md)
+       * findPackage
 
