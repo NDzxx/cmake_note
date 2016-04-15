@@ -53,6 +53,7 @@ ADD_DEFINITIONS(-DCRT_SECURE_NO_WARNINGS)
 ADD_DEFINITIONS(-DASIO_STANDALONE)
 ADD_DEFINITIONS(-DASIO_HAS_STD_CHRONO)
 
+#函数例子 本工程基本没有使用
 function(assign_source_group)
     foreach(_source IN ITEMS ${ARGN})
         if (IS_ABSOLUTE "${_source}")
@@ -77,9 +78,9 @@ function(create_lib source_dir lib_name)
 		set_property(TARGET ${lib_name} PROPERTY FOLDER ${ARGV2})
 	endif()
 endfunction(create_lib)
-
+#设置查找库的cmake路径
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
-
+#增加子目录 具体功能在子目录CMakelists.txt编写
 add_subdirectory(bqdata)
 add_subdirectory(bqnet)
 add_subdirectory(bqrpc)
