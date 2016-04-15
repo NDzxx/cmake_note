@@ -20,13 +20,16 @@ ADD_DEFINITIONS(-DSTATIC_LIBMONGOCLIENT)
 FILE(GLOB SRC_LIST ./*.cpp)
 FILE(GLOB HEADER_LIST ./*.h)
 
-#source_group(str FILES var)在vs下生成工程组，
-如下图
-![解决方案图示](group.jpg)
+
 source_group("Include" FILES ${HEADER_LIST})
 source_group("Source" FILES ${SRC_LIST})
 set(allFiles ${HEADER_LIST} ${SRC_LIST})
 add_library(bqdata STATIC ${allFiles})
 ```
+
+source_group(str FILES var)在vs下生成工程组，
+如下图
+![解决方案图示](group.jpg)  
+
 2.bqnet
 
