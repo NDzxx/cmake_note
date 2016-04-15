@@ -148,3 +148,11 @@ MESSAGE(STATUS "Found lib_curl libraries")
 TARGET_LINK_LIBRARIES(bqutil ${LIB_CURLSSL_LIBRARIES})
 ENDIF (LIB_CURLSSL_LIBRARIES)
 ```
+##link_directories
+在多个模块的情况下，可能一个模块的链接依赖於其它模块，例如一个可执行二进制需要链接某些模块，
+此时link_directories将有发挥作用。
+如在CMakeLists.txt增加：
+link_directories(${MyProject_BINARY_DIR}/src/libxxx
+${MyProject_BINARY_DIR}/src/libyyy)
+将指示CMake在LDFLAGS附加-Lsrc/libxxx -Lsrc/libyyy。  
+PS:baidu说此种方法有bug(?未验证)，最好采用find_package,所以我在工程中使用了find_package
