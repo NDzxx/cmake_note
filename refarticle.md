@@ -1,4 +1,4 @@
-#参考文章链接
+#其他参考文章链接
 
 - [cmake入门](http://www.hahack.com/codes/cmake/)
 - [cmake使用示例与总结](http://blog.csdn.net/wzzfeitian/article/details/40963457/)
