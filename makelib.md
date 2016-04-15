@@ -8,8 +8,9 @@ include_directories(. ../  ../commonlibs/dep/include ../commonlibs/dep/include/m
 ADD_DEFINITIONS(-DSTATIC_LIBMONGOCLIENT)
 
 #归类查找文件并赋值给变量
-#FILE(GLOB var source)
-#FILE(GLOB_RECURSE variable [RELATIVE path]
+#FILE(GLOB var source) 在当前目录下查找
+#FILE(GLOB_RECURSE var [RELATIVE path] 包含子文件夹的查找方式
+#aux_source_directory(path var) 查找对应路径下所有的文件并赋值给var
 FILE(GLOB SRC_LIST ./*.cpp)
 FILE(GLOB HEADER_LIST ./*.h)
 
