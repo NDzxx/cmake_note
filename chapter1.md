@@ -26,18 +26,19 @@ if (CMAKE_SYSTEM_NAME MATCHES "Linux")
     set(CMAKE_CXX_COMPILER "g++")
     #使用c++11
 	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}-std=c++11") 
-    #根据不同的
+    #根据debug和release使用不同优化
 	set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS} -O0 -Wall -g -ggdb")
     set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS} -O3 -Wall -DNDEBUG")
+    #64位还是32位程序选择
 	if(USE_X64)
 	 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -m64")
     else()
       set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -m32")
-	endif (USE_X64) 
-    #set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}-std=c++11  -g -Wall -Wno-unused-variable")  
+	endif (USE_X64)
 elseif (CMAKE_SYSTEM_NAME MATCHES "Windows")  
     message(STATUS "current platform: Windows")
     #ADD_DEFINITIONS(-D_AFXDLL)
+    #mfc使用选项 0是不使用，1是静态使用mfc库 2是dll使用mfc库
     SET(CMAKE_MFC_FLAG 0)
 else()  
     message(STATUS "other platform: ${CMAKE_SYSTEM_NAME}")  
