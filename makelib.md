@@ -110,6 +110,44 @@ source_group("Source" FILES ${SRC_LIST})
 set(allFiles ${HEADER_LIST} ${SRC_LIST})
 add_library(bqrpc STATIC ${allFiles})
 ```
+##4.cpp_redis
+```
+include_directories(
+. 
+..
+../commonlibs/dep/include
+../commonlibs/dep/include/mysql
+../bqutil
+)
+
+file(GLOB HEADER_LIST ./*.h ./*.hpp)
+file(GLOB SRC_LIST ./*.cpp)
+file(GLOB_RECURSE buildersFile builders/*.h builders/*.hpp builders/*.cpp)
+file(GLOB_RECURSE cpp_redisFile cpp_redis/*.h cpp_redis/*.hpp cpp_redis/*.cpp )
+file(GLOB_RECURSE networkFile network/*.hpp network/*.cpp)
+file(GLOB_RECURSE repliesFile replies/*.h replies/*.hpp replies/*.cpp)
+
+set(
+ allFiles
+ ${HEADER_LIST}
+ ${SRC_LIST} 
+ ${buildersFile}
+ ${cpp_redisFile}
+ ${networkFile}
+ ${repliesFile}
+)
+
+source_group("includes" FILES ${HEADER_LIST})
+source_group("source" FILES ${SRC_LIST})
+source_group("cpp_redis" FILES ${buildersFile})
+source_group("cpp_redis" FILES ${cpp_redisFile})
+source_group("network" FILES ${networkFile})
+source_group("replies" FILES ${repliesFile})
+add_library(cpp_redis STATIC ${allFiles})
+
+
+
+```
 ##4.bqutil
 ```
 include_directories(
