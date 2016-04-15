@@ -77,7 +77,7 @@ elseif (CMAKE_SYSTEM_NAME MATCHES "Linux")
 else()
  message(STATUS "other platform: ${CMAKE_SYSTEM_NAME}")  
 endif (CMAKE_SYSTEM_NAME MATCHES "Windows") 
-
+#外部库依旧需要使用搜索，话说可以使用Link_
 #搜索lib_protobuf
 FIND_PACKAGE(lib_protobuf REQUIRED)
 MARK_AS_ADVANCED(
