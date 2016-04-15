@@ -3,7 +3,13 @@
 CMakelists.txt如下  
 ```cmake
 #包含的头文件
-include_directories(. ../  ../commonlibs/dep/include ../commonlibs/dep/include/mysql ../bqutil)
+include_directories(
+. 
+../
+../commonlibs/dep/include 
+../commonlibs/dep/include/mysql
+../bqutil
+)
 #额外的预处理器
 ADD_DEFINITIONS(-DSTATIC_LIBMONGOCLIENT)
 
