@@ -130,4 +130,5 @@ FIND_LIBRARY(
 )
 endif (CMAKE_SYSTEM_NAME MATCHES "Linux") 
 ```
-
+参考文章链接:  
+[在 linux 下使用 CMake 构建应用程序](http://www.ibm.com/developerworks/cn/linux/l-cn-cmake/)
