@@ -28,8 +28,6 @@ set(allFiles ${HEADER_LIST} ${SRC_LIST})
 #编译静态库
 #如果编译动态库，如dll或者so,只需要修改STATIC为SHARED
 add_library(bqdata STATIC ${allFiles})
-
-#set_property(TARGET ${lib_name} PROPERTY FOLDER ${ARGV2}) 见下面分析
 ```
 
 ###source_group(str FILES var)
@@ -37,6 +35,12 @@ add_library(bqdata STATIC ${allFiles})
 如下图  
 ![解决方案图示](group.jpg)  
 
+
+以下我没有使用，不过比较重要，也记录下来
+```
+#set_property(TARGET ${lib_name} PROPERTY FOLDER ${ARGV2}) 见下面分析
+#set_target_properties(prs PROPERTIES OUTPUT_NAME pr) 见分析
+```
 ###set_property  
 在给定的作用域内设置一个命名的属性。
 
@@ -70,4 +74,77 @@ add_library(bqdata STATIC ${allFiles})
  ```
                         
 ##2.bqnet
+```cmake
+include_directories(
+.
+../ 
+../commonlibs/dep/include
+../commonlibs/dep/include/mysql
+../bqutil
+)
 
+FILE(GLOB SRC_LIST ./*.cpp)
+FILE(GLOB HEADER_LIST ./*.h)
+
+source_group("Include" FILES ${HEADER_LIST})
+source_group("Source" FILES ${SRC_LIST})
+set(allFiles ${HEADER_LIST} ${SRC_LIST})
+add_library(bqnet STATIC ${allFiles})
+```
+
+##3.bqrpc
+```cmake
+include_directories(
+.
+..
+../commonlibs/dep/include
+../commonlibs/dep/include/mysql
+../bqutil
+)
+
+FILE(GLOB SRC_LIST ./*.cpp)
+FILE(GLOB HEADER_LIST ./*.h)
+
+source_group("Include" FILES ${HEADER_LIST})
+source_group("Source" FILES ${SRC_LIST})
+set(allFiles ${HEADER_LIST} ${SRC_LIST})
+add_library(bqrpc STATIC ${allFiles})
+```
+##4.bqutil
+```
+include_directories(
+. 
+./http 
+.. 
+../commonlibs/dep/include
+../commonlibs/dep/include/mysql
+../bqutil
+)
+
+ADD_DEFINITIONS(-DSTATIC_LIBMONGOCLIENT)
+ADD_DEFINITIONS(-DBUILDING_LIBCURL)
+ADD_DEFINITIONS(-DDEBUGBUILD)
+ADD_DEFINITIONS(-DCURL_STATICLIB)
+ADD_DEFINITIONS(-DUSE_OPENSSL)
+
+file(GLOB HEADER_LIST ./*.h)
+file(GLOB SRC_LIST ./*.cpp)
+file(GLOB_RECURSE httpFiles ./http/*.cpp ./http/*.h)
+
+set(allFiles ${HEADER_LIST} ${SRC_LIST} ${httpFiles})
+source_group("include" FILES ${HEADER_LIST})
+source_group("source" FILES ${SRC_LIST})
+source_group("http" FILES ${httpFiles})
+add_library(bqutil STATIC ${allFiles})
+
+#查找自定义库
+FIND_PACKAGE(lib_curl_ssl_md REQUIRED)
+MARK_AS_ADVANCED(
+ LIB_CURLSSL_LIBRARIES
+)
+
+IF(LIB_CURLSSL_LIBRARIES)
+MESSAGE(STATUS "Found lib_curl libraries")
+TARGET_LINK_LIBRARIES(bqutil ${LIB_CURLSSL_LIBRARIES})
+ENDIF (LIB_CURLSSL_LIBRARIES)
+```
