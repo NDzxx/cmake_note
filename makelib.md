@@ -64,6 +64,10 @@ add_library(bqdata STATIC ${allFiles})
                         PROPERTIES prop1 value1
                         prop2 value2 ...)  
  设置输出名称，版本号，解决相同target被删除的问题  
+ ```cmake
+ #让目标prs的输出libprs.a改名为libpr.a。
+ set_target_properties(prs PROPERTIES OUTPUT_NAME pr)
+ ```
                         
 ##2.bqnet
 
