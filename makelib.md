@@ -7,7 +7,7 @@ include_directories(. ../  ../commonlibs/dep/include ../commonlibs/dep/include/m
 #额外的预处理器
 ADD_DEFINITIONS(-DSTATIC_LIBMONGOCLIENT)
 
-#查找文件并赋值给变量
+#归类查找文件并赋值给变量
 #FILE(GLOB var source)
 FILE(GLOB SRC_LIST ./*.cpp)
 FILE(GLOB HEADER_LIST ./*.h)
