@@ -6,5 +6,6 @@
    * [makeLib](makelib.md)
    * [find_package](findpackage.md)
    * [makeExe](makeExe.md)
+   * mfc
 * [参考文章](refarticle.md)
 
