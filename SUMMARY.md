@@ -7,6 +7,6 @@
    * [find_package](findpackage.md)
    * [makeExe](makeExe.md)
    * [mfc](mfc.md)
-   * release和debug
+   * [release和debug](releasehe_debug.md)
 * [参考文章](refarticle.md)
 
